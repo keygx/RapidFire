@@ -36,7 +36,7 @@ class ViewController: UIViewController {
             .setPath("/get")
             .setQuery(["a":"1", "b":"2"])
             .setCompletionHandler(handler)
-            .shoot()
+            .fire()
     }
     
     @IBAction func btnPostAction(_ sender: UIButton) {
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
             .setPath("/post")
             .setBody(["a":"1", "b":"2"])
             .setCompletionHandler(handler)
-            .shoot()
+            .fire()
     }
     
     @IBAction func btnPostJsonAction(_ sender: UIButton) {
@@ -54,6 +54,6 @@ class ViewController: UIViewController {
             .setPath("/post")
             .setJSON(["a":"1", "b":"2"])
             .setCompletionHandler(handler)
-            .shoot()
+            .fire()
     }
 }

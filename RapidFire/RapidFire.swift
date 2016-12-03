@@ -74,7 +74,7 @@ public class RapidFire {
         return self
     }
     
-    public func shoot() {
+    public func fire() {
         DispatchQueue.global().async {
             self.start()
         }
