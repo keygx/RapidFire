@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         switch response.result {
         case .success:
             print("success:\n \(response.statusCode): \(response.response)")
-            print(RapidFire.Util.toDictionary(from: response.data))
+            print(response.toDictionary())
         case .failure:
             print("error:\n \(response.statusCode): \(response.error)")
         }
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     
     @IBAction func btnGetAction(_ sender: UIButton) {
         // GET with Query Parameters
-        RapidFire(.get, "https://httpbin.org")
+        RapidFire(.get, "https://httpbinn.org")
             .setPath("/get")
             .setQuery(["a":"1", "b":"2"])
             .setCompletionHandler(handler)

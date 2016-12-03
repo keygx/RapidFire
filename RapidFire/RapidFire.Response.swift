@@ -33,3 +33,47 @@ extension RapidFire {
         }
     }
 }
+
+extension RapidFire.Response {
+    
+    // Convert JSON to Dictionary
+    public func toDictionary() -> [String: Any] {
+        var dic = [String: Any]()
+        
+        if let jsonData = self.data {
+            do {
+                dic = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as! [String: Any]
+            } catch {
+                print("Converting Failed.")
+            }
+        }
+        
+        return dic
+    }
+    
+    // Convert JSON to Array
+    public func toArray() -> [[String: Any]] {
+        var arr = [[String: Any]]()
+        
+        if let jsonData = self.data {
+            do {
+                arr = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as! [[String: Any]]
+            } catch {
+                print("Converting Failed.")
+            }
+        }
+        
+        return arr
+    }
+    
+    // Convert JSON to String
+    public func toString() -> String {
+        if let stringData = self.data {
+            if let string = String(data: stringData, encoding: String.Encoding.utf8) {
+                return string
+            }
+        }
+        
+        return ""
+    }
+}
