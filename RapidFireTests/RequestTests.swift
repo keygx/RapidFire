@@ -89,9 +89,11 @@ class RequestTests: XCTestCase {
         let filePath = Bundle(for: type(of: self)).path(forResource: "circle", ofType: "png")
         let imageData = try! Data(contentsOf: URL(fileURLWithPath: filePath!))
         session.settings.partDataBinary?.append(RapidFire.PartData(name: "image", filename: "circle.png", value: imageData, mimeType: "image/png"))
+        let request = session.createURLRequest(.post, session.settings.baseUrl!)
         
-        XCTAssertEqual(session.createURLRequest(.post, session.settings.baseUrl!)?.httpMethod, RapidFire.HTTPMethod.post.rawValue)
-        XCTAssertEqual(session.createURLRequest(.post, session.settings.baseUrl!)?.url?.absoluteString, "https://example.com/multipart")
+        XCTAssertEqual(request?.httpMethod, RapidFire.HTTPMethod.post.rawValue)
+        XCTAssertEqual(request?.url?.absoluteString, "https://example.com/multipart")
+        XCTAssertEqual(request?.httpBody, session.buildMultipartFormData(request: request!, params: session.settings.partDataParams, partData: session.settings.partDataBinary) as Data)
     }
     
     func test_createURLRequest_TimeoutInterval() {

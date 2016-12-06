@@ -11,7 +11,11 @@ import Foundation
 extension RapidFire {
     
     func boundary() -> String {
+        #if TEST
+        return "RapidFire-boundary-TEST"
+        #else
         return String(format: "RapidFire-boundary-%08x-%08x", arc4random(), arc4random())
+        #endif
     }
     
     func buildMultipartFormData(request: NSMutableURLRequest, params: [String: String]?, partData: [PartData]?) -> NSMutableData {

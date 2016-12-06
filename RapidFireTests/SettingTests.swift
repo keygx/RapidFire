@@ -46,7 +46,7 @@ class SettingTests: XCTestCase {
             .setTimeout(15)
             .setRetry(3, intervalSec: 30)
             .setCompletionHandler({ (response: RapidFire.Response) in })
-            .shoot()
+            .fire()
         
         XCTAssertEqual(session.settings.method, method)
         XCTAssertEqual(session.settings.baseUrl, baseUrl)
