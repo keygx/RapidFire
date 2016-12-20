@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     
     @IBAction func btnGetAction(_ sender: UIButton) {
         // GET with Query Parameters
-        RapidFire(.get, "https://httpbinn.org")
+        RapidFire(.get, "https://httpbin.org")
             .setPath("/get")
             .setQuery(["a":"1", "b":"2"])
             .setCompletionHandler(handler)
