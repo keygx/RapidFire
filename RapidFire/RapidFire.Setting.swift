@@ -38,7 +38,8 @@ extension RapidFire {
         var path:              String?
         var headers:           [String: String]?
         var query:             [String: String]?
-        var body:              [String: String]?
+        var bodyParams:        [String: String]?
+        var bodyData:          Data?
         var json:              [String: Any]?
         var partDataParams:    [String: String]?
         var partDataBinary:    [PartData]?

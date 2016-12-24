@@ -36,7 +36,12 @@ public class RapidFire {
     }
     
     public func setBody(_ params: [String: String]) -> Self {
-        settings.body = params
+        settings.bodyParams = params
+        return self
+    }
+    
+    public func setBody(_ params: Data) -> Self {
+        settings.bodyData = params
         return self
     }
     

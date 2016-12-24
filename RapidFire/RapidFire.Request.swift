@@ -90,17 +90,19 @@ extension RapidFire {
         if let json = settings.json {
             // add Content-Type application/json
             request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            
             do {
+                // JSON
                 request.httpBody = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
                 return request
             } catch {
                 return nil
             }
-        } else {
-            if let paramString = buildBodyParameters(parameters: settings.body) {
-                request.httpBody = paramString.data(using: String.Encoding.utf8)
-            }
+        } else if let data = settings.bodyData {
+            // Data
+            request.httpBody = data
+        } else if let paramString = buildBodyParameters(parameters: settings.bodyParams) {
+            // Parameters
+            request.httpBody = paramString.data(using: String.Encoding.utf8)
         }
         
         return request
