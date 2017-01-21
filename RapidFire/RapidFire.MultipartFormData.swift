@@ -18,11 +18,12 @@ extension RapidFire {
         #endif
     }
     
-    func buildMultipartFormData(request: NSMutableURLRequest, params: [String: String]?, partData: [PartData]?) -> NSMutableData {
+    func buildMultipartFormData(request: URLRequest, params: [String: String]?, partData: [PartData]?) -> Data {
         
         let boundaryString = boundary()
-        let body = NSMutableData()
+        var body = Data()
         var formData = ""
+        var request = request
         
         request.setValue("multipart/form-data; charset=utf-8; boundary=\(boundaryString)", forHTTPHeaderField: "Content-Type")
         
@@ -63,7 +64,7 @@ extension RapidFire {
         body.append(formData.data(using: String.Encoding.utf8)!)
         
         // Content-Length
-        request.setValue(String(describing: body.length), forHTTPHeaderField: "Content-Length")
+        request.setValue(String(describing: body.count), forHTTPHeaderField: "Content-Length")
         
         return body
     }

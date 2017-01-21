@@ -25,7 +25,7 @@ class RequestTests: XCTestCase {
         session.settings.baseUrl = "https://example.com"
         session.settings.path = "/get"
         session.settings.query = ["a":"1", "b":"2"]
-        session.settings.body = ["a":"2", "b":"3"]
+        session.settings.bodyParams = ["a":"2", "b":"3"]
         
         XCTAssertEqual(session.createURLRequest(.get, session.settings.baseUrl!)?.httpMethod, RapidFire.HTTPMethod.get.rawValue)
         XCTAssertEqual(session.createURLRequest(.get, session.settings.baseUrl!)?.url?.absoluteString, "https://example.com/get?b=2&a=1")
@@ -35,7 +35,7 @@ class RequestTests: XCTestCase {
         session.settings.baseUrl = "https://example.com"
         session.settings.path = "/post"
         session.settings.query = ["a":"1", "b":"2"]
-        session.settings.body = ["a":"2", "b":"3"]
+        session.settings.bodyParams = ["a":"2", "b":"3"]
         
         XCTAssertEqual(session.createURLRequest(.post, session.settings.baseUrl!)?.httpMethod, RapidFire.HTTPMethod.post.rawValue)
         XCTAssertEqual(session.createURLRequest(.post, session.settings.baseUrl!)?.url?.absoluteString, "https://example.com/post")
@@ -46,7 +46,7 @@ class RequestTests: XCTestCase {
         session.settings.baseUrl = "https://example.com"
         session.settings.path = "/put"
         session.settings.query = ["a":"1", "b":"2"]
-        session.settings.body = ["a":"2", "b":"3"]
+        session.settings.bodyParams = ["a":"2", "b":"3"]
         
         XCTAssertEqual(session.createURLRequest(.put, session.settings.baseUrl!)?.httpMethod, RapidFire.HTTPMethod.put.rawValue)
         XCTAssertEqual(session.createURLRequest(.put, session.settings.baseUrl!)?.url?.absoluteString, "https://example.com/put")
@@ -57,7 +57,7 @@ class RequestTests: XCTestCase {
         session.settings.baseUrl = "https://example.com"
         session.settings.path = "/patch"
         session.settings.query = ["a":"1", "b":"2"]
-        session.settings.body = ["a":"2", "b":"3"]
+        session.settings.bodyParams = ["a":"2", "b":"3"]
         
         XCTAssertEqual(session.createURLRequest(.patch, session.settings.baseUrl!)?.httpMethod, RapidFire.HTTPMethod.patch.rawValue)
         XCTAssertEqual(session.createURLRequest(.patch, session.settings.baseUrl!)?.url?.absoluteString, "https://example.com/patch")
@@ -76,7 +76,7 @@ class RequestTests: XCTestCase {
     func test_createURLRequest_DELETE_Body() {
         session.settings.baseUrl = "https://example.com"
         session.settings.path = "/delete"
-        session.settings.body = ["a":"2", "b":"3"]
+        session.settings.bodyParams = ["a":"2", "b":"3"]
         
         XCTAssertEqual(session.createURLRequest(.delete, session.settings.baseUrl!)?.httpMethod, RapidFire.HTTPMethod.delete.rawValue)
         XCTAssertEqual(session.createURLRequest(.delete, session.settings.baseUrl!)?.url?.absoluteString, "https://example.com/delete")
@@ -107,8 +107,8 @@ class RequestTests: XCTestCase {
     func test_addHeaders() {
         let headers = ["Content-Type":"image/jpeg", "MyCustom":"value"]
         session.settings.headers = headers
-        let request = NSMutableURLRequest(url: URL(string: "https://example.com")!)
-        session.addHeaders(request: request)
+        let urlRequest = URLRequest(url: URL(string: "https://example.com")!)
+        let request = session.addHeaders(request: urlRequest)
         
         XCTAssertEqual(request.allHTTPHeaderFields?.count, 2)
         XCTAssertEqual(request.allHTTPHeaderFields?["Content-Type"], "image/jpeg")

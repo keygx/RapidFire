@@ -53,7 +53,7 @@ class SettingTests: XCTestCase {
         XCTAssertEqual(session.settings.path, path)
         XCTAssertEqual(session.settings.headers!, headers)
         XCTAssertEqual(session.settings.query!, query)
-        XCTAssertEqual(session.settings.body!, body)
+        XCTAssertEqual(session.settings.bodyParams!, body)
         XCTAssertEqual(session.settings.json?["a"] as! String, "1")
         XCTAssertEqual(session.settings.json?["b"] as! String, "2")
         XCTAssertEqual(session.settings.json?["c"] as! String, "3")

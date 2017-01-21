@@ -10,10 +10,10 @@ import Foundation
 
 extension RapidFire {
     
-    // Create NSMutableURLRequest
-    func createURLRequest(_ method: HTTPMethod, _ baseUrl: String) -> NSMutableURLRequest? {
+    // Create URLRequest
+    func createURLRequest(_ method: HTTPMethod, _ baseUrl: String) -> URLRequest? {
                 
-        let request: NSMutableURLRequest?
+        var request: URLRequest?
         
         switch method {
         case .get:
@@ -28,7 +28,7 @@ extension RapidFire {
             }
         }
         
-        guard let validRequest = request else { return nil }
+        guard var validRequest = request else { return nil }
         
         // Method
         validRequest.httpMethod = method.rawValue
@@ -39,13 +39,13 @@ extension RapidFire {
         }
         
         // Headers
-        addHeaders(request: validRequest)
+        validRequest = addHeaders(request: validRequest)
         
         return validRequest
     }
     
     // QueryString
-    func requestWithQuery(_ baseUrl: String) -> NSMutableURLRequest? {
+    func requestWithQuery(_ baseUrl: String) -> URLRequest? {
         // endpoint = baseUrl + path
         var endpoint = baseUrl + (settings.path ?? "")
         
@@ -59,14 +59,14 @@ extension RapidFire {
             return nil
         }
         
-        // NSMutableURLRequest
-        let request = NSMutableURLRequest(url: url)
+        // URLRequest
+        let request = URLRequest(url: url)
         
         return request
     }
     
     // BodyMessage
-    func requestWithBody(_ baseUrl: String) -> NSMutableURLRequest? {
+    func requestWithBody(_ baseUrl: String) -> URLRequest? {
         // endpoint = baseUrl + path
         let endpoint = baseUrl + (settings.path ?? "")
         
@@ -75,8 +75,8 @@ extension RapidFire {
             return nil
         }
         
-        // NSMutableURLRequest
-        let request = NSMutableURLRequest(url: url)
+        // URLRequest
+        var request = URLRequest(url: url)
         
         // multipart-formdata
         if settings.partDataParams != nil || settings.partDataBinary != nil {
@@ -109,15 +109,19 @@ extension RapidFire {
     }
     
     // Add Headers
-    func addHeaders(request: NSMutableURLRequest) {
+    func addHeaders(request: URLRequest) -> URLRequest {
         
         guard let headers = settings.headers else {
-            return
+            return request
         }
+        
+        var request = request
         
         headers.forEach { (key, value) in
             request.setValue(value, forHTTPHeaderField: key)
         }
+        
+        return request
     }
     
     // Build Query Parameters
@@ -130,7 +134,7 @@ extension RapidFire {
         var queries: [String] = []
         
         params.forEach { (key, value) in
-            if let encoded = value.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
+            if let encoded = value.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
                 queries.append(key + "=" + encoded)
             }
         }
