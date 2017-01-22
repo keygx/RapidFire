@@ -97,7 +97,7 @@ RapidFire(.get, "https://example.com/users")
 
 ### Retry
 ```
-.setRetry(3)
+.setRetry(3) //default interval 15 sec.
 
 .setRetry(3, intervalSec: 30)
 ```
@@ -113,6 +113,30 @@ RapidFire(.get, "https://example.com/users")
         print("error:\n \(response.statusCode): \(response.error)")
     }
 })
+```
+
+###### RapidFire.Response.swift
+```
+public enum Result {
+    case success
+    case failure
+}
+    
+public var result:     Result
+public var statusCode: Int?
+public var data:       Data?
+public var response:   URLResponse?
+public var error:      Error?
+
+
+// Convert JSON to Dictionary
+public func toDictionary() -> [String: Any]
+
+// Convert JSON to Array
+public func toArray() -> [[String: Any]]
+
+// Convert JSON to String
+public func toString() -> String
 ```
 
 ### Utilities
