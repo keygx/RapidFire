@@ -71,7 +71,7 @@ RapidFire(.get, "https://example.com/users")
 
 ### Query Parameters
 ```
-.setQuery(["a":"1", "b":"2"])
+.setQuery(["a":"1", "b":"2"]) //?a=1&b=2
 ```
 
 ### Body Parameters
