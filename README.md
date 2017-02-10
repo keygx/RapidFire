@@ -45,8 +45,7 @@ To integrate "RapidFire.framework" into your Xcode project
 ## Usage
 
 ### Basic Request
-
-```
+```swift
 RapidFire(.get, "https://example.com/users")
 	.setCompletionHandler({ (response: RapidFire.Response) in
 		switch response.result {
@@ -59,51 +58,71 @@ RapidFire(.get, "https://example.com/users")
 	.fire()
 ```
 
-### Path
+### Init
+```swift
+RapidFire(HTTP Method, baseURL)
 ```
+
+```swift
+// HTTP Method
+public enum HTTPMethod: String {
+    case get    = "GET"
+    case post   = "POST"
+    case put    = "PUT"
+    case patch  = "PATCH"
+    case delete = "DELETE"
+}
+```
+```swift
+// baseURL
+ex: "https://example.com"
+```
+
+### Path
+```swift
 .setPath("/path")
 ```
 
 ### Headers
-```
+```swift
 .setHeaders(["x-myheader-1":"value1", "x-myheader-2":"value2"])
 ```
 
 ### Query Parameters
-```
+```swift
 .setQuery(["a":"1", "b":"2"]) //?a=1&b=2
 ```
 
 ### Body Parameters
-```
+```swift
 .setBody(["a":"1", "b":"2"])
 ```
 
 ### application/json
-```
+```swift
 .setJSON(["a":"1", "b":"2"])
 ```
 
 ### multipart/form-data
-```
+```swift
 .setPartData(["a":"1", "b":"2"])
 .setPartData(RapidFire.PartData(name: "image", filename: "sample.png", value: imageData, mimeType: "image/png"))
 ```
 
 ### Timeout
-```
+```swift
 .setTimeout(30) //sec.
 ```
 
 ### Retry
-```
+```swift
 .setRetry(3) //default interval 15 sec.
 
 .setRetry(3, intervalSec: 30)
 ```
 
 ### Response
-```
+```swift
 .setCompletionHandler({ (response: RapidFire.Response) in
     switch response.result {
     case .success:
@@ -116,7 +135,7 @@ RapidFire(.get, "https://example.com/users")
 ```
 
 ###### RapidFire.Response.swift
-```
+```swift
 public enum Result {
     case success
     case failure
@@ -140,7 +159,7 @@ public func toString() -> String
 ```
 
 ### Utilities
-```
+```swift
 // Convert JSON to Dictionary
 RapidFire.Util.toDictionary(from: response.data)
 
