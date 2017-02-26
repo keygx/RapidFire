@@ -33,6 +33,7 @@ class SettingTests: XCTestCase {
         let filePath = Bundle(for: type(of: self)).path(forResource: "circle", ofType: "png")
         let imageData = try! Data(contentsOf: URL(fileURLWithPath: filePath!))
         let partDataBinary = RapidFire.PartData(name: "image", filename: "circle.png", value: imageData, mimeType: "image/png")
+        let requestCachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData
         
         session = RapidFire(method, baseUrl)
         session
@@ -46,6 +47,7 @@ class SettingTests: XCTestCase {
             .setTimeout(15)
             .setRetry(3, intervalSec: 30)
             .setCompletionHandler({ (response: RapidFire.Response) in })
+            .setRequestCachePolicy(requestCachePolicy)
             .fire()
         
         XCTAssertEqual(session.settings.method, method)
@@ -67,6 +69,8 @@ class SettingTests: XCTestCase {
         XCTAssertEqual(session.settings.timeoutInterval, 15)
         XCTAssertEqual(session.settings.retryCount, 3)
         XCTAssertEqual(session.settings.retryInterval, 30)
+        XCTAssertEqual(session.settings.requestCachePolicy, requestCachePolicy)
         XCTAssertNotNil(session.settings.completionHandler)
+
     }
 }

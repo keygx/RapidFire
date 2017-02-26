@@ -37,6 +37,7 @@ extension RapidFire {
         
         // URLSessionConfig
         let config = URLSessionConfiguration.default
+        config.requestCachePolicy = settings.requestCachePolicy
         // URLSession
         let session = URLSession(configuration: config)
         

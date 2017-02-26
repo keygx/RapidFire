@@ -47,5 +47,6 @@ extension RapidFire {
         var retryCount: Int    = 0
         var retryInterval: Int = 15
         var completionHandler: ((RapidFire.Response) -> Void)?
+        var requestCachePolicy: NSURLRequest.CachePolicy = NSURLRequest.CachePolicy.useProtocolCachePolicy
     }
 }

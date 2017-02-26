@@ -78,6 +78,11 @@ public class RapidFire {
         settings.completionHandler = handler
         return self
     }
+
+    public func setRequestCachePolicy (_ cachePolicy: NSURLRequest.CachePolicy) -> Self {
+        settings.requestCachePolicy = cachePolicy
+        return self
+    }
     
     public func fire() {
         DispatchQueue.global().async {
