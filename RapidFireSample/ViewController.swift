@@ -15,10 +15,10 @@ class ViewController: UIViewController {
     let handler = { (response: RapidFire.Response) in
         switch response.result {
         case .success:
-            print("success:\n \(response.statusCode): \(response.response)")
+            print("success:\n \(response.statusCode as Any): \(response.response as Any)")
             print(response.toDictionary())
         case .failure:
-            print("error:\n \(response.statusCode): \(response.error)")
+            print("error:\n \(response.statusCode as Any): \(response.error as Any)")
         }
     }
     

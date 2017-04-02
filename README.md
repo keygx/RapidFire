@@ -4,7 +4,7 @@ RapidFire is a simple networking library. It is suitable for casual use such as 
 It wraps URLSession and is written in Swift.
 
 ## Requirements
-- Swift 3.0.2
+- Swift 3.1
 - iOS 8.0 or later
 
 ## Features
@@ -126,10 +126,10 @@ ex: "https://example.com"
 .setCompletionHandler({ (response: RapidFire.Response) in
     switch response.result {
     case .success:
-        print("success:\n \(response.statusCode): \(response.response)")
+        print("success:\n \(response.statusCode as Any): \(response.response as Any)")
         print(response.toDictionary())
     case .failure:
-        print("error:\n \(response.statusCode): \(response.error)")
+        print("error:\n \(response.statusCode as Any): \(response.error as Any)")
     }
 })
 ```
