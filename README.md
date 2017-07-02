@@ -4,7 +4,7 @@ RapidFire is a simple networking library. It is suitable for casual use such as 
 It wraps URLSession and is written in Swift.
 
 ## Requirements
-- Swift 3.1
+- Swift 4.0
 - iOS 8.0 or later
 
 ## Features

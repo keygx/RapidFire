@@ -29,7 +29,7 @@ extension RapidFire {
         
         // Params
         if let params = params {
-            params.forEach { (key: String, value: String) in
+            for (key, value) in params {
                 formData = "\r\n"
                 formData += "--\(boundaryString)"
                 formData += "\r\n"
@@ -43,7 +43,7 @@ extension RapidFire {
         
         // Data
         if let partData = partData {
-            partData.forEach { (data: PartData) in
+            for data in partData {
                 formData = "\r\n"
                 formData += "--\(boundaryString)"
                 formData += "\r\n"
