@@ -117,7 +117,7 @@ extension RapidFire {
         
         var request = request
         
-        headers.forEach { (key, value) in
+        for (key, value) in headers {
             request.setValue(value, forHTTPHeaderField: key)
         }
         
@@ -133,7 +133,7 @@ extension RapidFire {
         
         var queries: [String] = []
         
-        params.forEach { (key, value) in
+        for (key, value) in params {
             if let encoded = value.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
                 queries.append(key + "=" + encoded)
             }
@@ -151,7 +151,7 @@ extension RapidFire {
         
         var queries: [String] = []
         
-        params.forEach { (key, value) in
+        for (key, value) in params {
             queries.append(key + "=" + value)
         }
         
