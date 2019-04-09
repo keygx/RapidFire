@@ -7,16 +7,16 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForTesting = "YES"
+            buildForTesting = "NO"
             buildForRunning = "YES"
             buildForProfiling = "YES"
             buildForArchiving = "YES"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "36A447F21DE02BF700DC48CE"
-               BuildableName = "RapidFire.framework"
-               BlueprintName = "RapidFire"
+               BlueprintIdentifier = "36A447D81DE02BAA00DC48CE"
+               BuildableName = "RapidFireSample.app"
+               BlueprintName = "RapidFireSample"
                ReferencedContainer = "container:RapidFireSample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,6 +29,15 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "36A447D81DE02BAA00DC48CE"
+            BuildableName = "RapidFireSample.app"
+            BlueprintName = "RapidFireSample"
+            ReferencedContainer = "container:RapidFireSample.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -42,15 +51,23 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "36A447F21DE02BF700DC48CE"
-            BuildableName = "RapidFire.framework"
-            BlueprintName = "RapidFire"
+            BlueprintIdentifier = "36A447D81DE02BAA00DC48CE"
+            BuildableName = "RapidFireSample.app"
+            BlueprintName = "RapidFireSample"
             ReferencedContainer = "container:RapidFireSample.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = ""
+            value = ""
+            isEnabled = "NO">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -60,15 +77,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "36A447F21DE02BF700DC48CE"
-            BuildableName = "RapidFire.framework"
-            BlueprintName = "RapidFire"
+            BlueprintIdentifier = "36A447D81DE02BAA00DC48CE"
+            BuildableName = "RapidFireSample.app"
+            BlueprintName = "RapidFireSample"
             ReferencedContainer = "container:RapidFireSample.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
